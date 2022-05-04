@@ -105,14 +105,15 @@ Versuchen sie nun folgende Fragen mit analytischen Überlegungen und numerischen
 - Was passiert im Grenzfall <img src="https://render.githubusercontent.com/render/math?math=d \rightarrow 0"> ?
 - Was passiert im Grenzfall <img src="https://render.githubusercontent.com/render/math?math=d \rightarrow \infty"> ?
 
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/andreasgrueneis/QuantumTheory-1_Notebooks/blob/main/TD-Free-Schroedinger.ipynb)
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/andreasgrueneis/QuantumTheory-1_Notebooks/HEAD?labpath=TD-Free-Schroedinger.ipynb)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/andreasgrueneis/Quantentheorie-1_Notebooks/blob/main/notebooks/TD-Free-Schroedinger.ipynb)
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/andreasgrueneis/Quantentheorie-1_Notebooks/HEAD?labpath=notebooks/TD-Free-Schroedinger.ipynb)
 
 
 ### Wellenpaket an der Potentialstufe
 
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/andreasgrueneis/QuantumTheory-1_Notebooks/blob/main/TD-Schroedinger.ipynb)
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/andreasgrueneis/QuantumTheory-1_Notebooks/HEAD?labpath=TD-Schroedinger.ipynb)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/andreasgrueneis/Quantentheorie-1_Notebooks/blob/main/notebooks/TD-Schroedinger.ipynb)
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/andreasgrueneis/Quantentheorie-1_Notebooks/HEAD?labpath=notebooks/TD-Schroedinger.ipynb)
+
 
 
 ### Transmission on Reflexion von Wellenpaket an Potentialbarriere
