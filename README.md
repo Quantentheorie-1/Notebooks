@@ -72,7 +72,7 @@ wird im Impulsraum berechnet, während die Wirkung von
 <img src="https://render.githubusercontent.com/render/math?math=e^{-\frac{i}{\hbar} \hat{V} \Delta t}">
 im Ortsraum berechnet wird.
 
-### Freies Teilchen (vgl. 2.3.1 im Skriptum)
+### Freies Teilchen (vgl. 3.2.1 im Skriptum)
 
 Wir betrachten zuerst die Zeitentwicklung eines Gaußschen Wellenpaketes für den Fall
 eines freien Teilchens (*V=0*).
@@ -109,14 +109,4 @@ Versuchen sie nun folgende Fragen mit analytischen Überlegungen und numerischen
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/andreasgrueneis/Quantentheorie-1_Notebooks/HEAD?labpath=notebooks/TD-Free-Schroedinger.ipynb)
 
 
-### Wellenpaket an der Potentialstufe
 
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/andreasgrueneis/Quantentheorie-1_Notebooks/blob/main/notebooks/TD-Schroedinger.ipynb)
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/andreasgrueneis/Quantentheorie-1_Notebooks/HEAD?labpath=notebooks/TD-Schroedinger.ipynb)
-
-
-
-### Transmission on Reflexion von Wellenpaket an Potentialbarriere
-
-
-### Glauber-Zustände
