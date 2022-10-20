@@ -110,3 +110,10 @@ Versuchen sie nun folgende Fragen mit analytischen Überlegungen und numerischen
 
 
 
+### Teilchen an der Potentialbarriere (vgl. 3.4 im Skriptum)
+
+
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Quantentheorie-1/Notebooks/blob/main/notebooks/TD-Schroedinger-Barriere.ipynb)
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/Quantentheorie-1/Notebooks/HEAD?labpath=notebooks%2FTD-Schroedinger-Barriere.ipynb)
+
+
