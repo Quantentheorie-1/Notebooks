@@ -117,3 +117,16 @@ Versuchen sie nun folgende Fragen mit analytischen Überlegungen und numerischen
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/Quantentheorie-1/Notebooks/HEAD?labpath=notebooks%2FTD-Schroedinger-Barriere.ipynb)
 
 
+### Leiteroperatoren zur algebraischen Lösung des harmonischen Oszillators (vgl. 5.2.1 im Skriptum)
+
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Quantentheorie-1/Notebooks/blob/main/notebooks/Ladder-Operators.ipynb)
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/Quantentheorie-1/Notebooks/HEAD?labpath=notebooks%2FLadder-Operators.ipynb)
+
+
+### Kohärente Glauber-Zustände (vgl. 5.3.2 im Skriptum)
+
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Quantentheorie-1/Notebooks/blob/main/notebooks/TD-Schroedinger-Glauber.ipynb)
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/Quantentheorie-1/Notebooks/HEAD?labpath=notebooks%2FTD-Schroedinger-Glauber.ipynb)
+
+
+
