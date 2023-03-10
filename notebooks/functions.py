@@ -2,6 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from ipywidgets import interact, interactive, fixed, interact_manual
 import ipywidgets as widgets
+from IPython.display import clear_output
 
 class Schroedinger_Equation:
     def __init__(self, hbar=1, m=1):
@@ -64,7 +65,7 @@ class Schroedinger_Equation:
         return psi_x
     
     def calculate_rho(self,psi):
-        rho = np.abs(psi)
+        rho = np.abs(psi)**2
         return rho
     
     def split_operator_method(self, potential_type = 'Freies_Teilchen', v=0):
@@ -123,9 +124,20 @@ class Schroedinger_Equation:
             axs[rho_pos].plot(self.x_grid, self.v_vector, 'blue', label='$V(x)$')
         
         
-        axs[psi_x_pos].set_xlim([self.xmin, self.xmax]) #Limits not ends of vectors!!!
-        axs[psi_k_pos].set_xlim([self.kmin, self.kmax]) #Variable k-Limits
-        axs[rho_pos].set_xlim([self.xmin, self.xmax])
+        if potential_type=='Freies_Teilchen':
+            axs[psi_x_pos].set_xlim([-5, 20])
+            axs[psi_k_pos].set_xlim([-5, 20])
+            axs[rho_pos].set_xlim([-5, 20])
+            
+        elif potential_type=='Barriere':
+            axs[psi_x_pos].set_xlim([self.xmin, self.xmax])
+            axs[psi_k_pos].set_xlim([self.kmin, self.kmax])
+            axs[rho_pos].set_xlim([self.xmin, self.xmax])
+            
+        elif potential_type=='Glauber_Zustand':
+            axs[psi_x_pos].set_xlim([self.xmin, self.xmax])
+            axs[psi_k_pos].set_xlim([-10, 10])
+            axs[rho_pos].set_xlim([self.xmin, self.xmax])  
         
         axs[psi_x_pos].set_ylim([-1, 1])
         axs[psi_k_pos].set_ylim([-1, 1])
@@ -201,4 +213,98 @@ class Schroedinger_Equation:
         self.split_operator_method(potential_type, v0)
         
         self.plot_psi(0, potential_type)
+        
+
+#######################################################################        
+
+        
+class leiter_operatoren():
+    def __init__(self, hbar=1, m=1, x_min=-10, x_max=10, Nx=2**9):
+        self.hbar = hbar
+        self.m = m
+    
+        self.x_min = x_min
+        self.x_max = x_max
+        self.Nx = Nx # Less grid points increases stability after several a/a^dagger operations
+    
+        self.dx = (x_max-x_min)/(Nx)#Nx-1???
+        self.x_grid = np.arange(self.x_min,self.x_max,self.dx)
+    
+    def init_psi(self, x0=1):
+        self.psi = np.zeros(self.Nx,dtype=complex)
+        self.psi[:] = np.exp( -(self.x_grid/x0)**2 / 2 ) * np.sqrt(1/np.pi*x0) # not 1./np.sqrt(x0*np.sqrt(np.pi))?
+    
+    def diff_psi(self, psi):
+        d_psi = np.zeros(self.Nx,dtype=complex)
+        d_psi[0] = (psi[1] - psi[0]) / self.dx
+        d_psi[-1] = (psi[-1] - psi[-2]) / self.dx
+        for i in range(1,self.Nx-1):
+            d_psi[i] = (psi[i+1] - psi[i-1]) / (2 * self.dx)
+        return d_psi
+    
+    def apply_a(self):
+        d_psi = self.diff_psi(self.psi)
+        self.psi = (d_psi + self.x_grid * self.psi) / np.sqrt(2)
+    
+    def apply_a_dagger(self):
+        d_psi = self.diff_psi(self.psi)
+        self.psi = (-d_psi + self.x_grid * self.psi) / np.sqrt(2)
+    
+    def calc_rho(self,psi):
+        return np.abs(psi)**2
+    
+    def plot_psi(self):
+        rho = self.calc_rho(self.psi)
+        
+        fig, axs = plt.subplots(2)
+        axs[0].plot(self.x_grid, np.real(self.psi[:]), "red", label='Re[$\psi(x,t)$]')
+        axs[0].plot(self.x_grid, np.imag(self.psi[:]), "green", label='Im[$\psi(x,t)$]')
+
+        axs[1].plot(self.x_grid, rho[:], "black", label='$|\psi(x,t)|^2$')
+    
+        axs[0].legend(loc='upper right')
+        axs[1].legend(loc='upper right')
+        fig.set_size_inches(10, 9)
+    
+        axs[0].set_xlim([self.x_min, self.x_max])
+        axs[1].set_xlim([self.x_min, self.x_max])
+
+        plt.rcParams['font.size'] = '20'
+        plt.show()
+    
+    def display(self):
+        self.init_psi()
+        
+        a_button = widgets.Button(description='Absteiger')
+        a_dagger_button = widgets.Button(description='Aufsteiger')
+        reset_button = widgets.Button(description='Reset')
+        
+        def a_button_function(_):
+            with out:
+                clear_output()
+                self.apply_a()
+                self.plot_psi()
+                
+        a_button.on_click(a_button_function)
+        
+        def a_dagger_button_function(_):
+            with out:
+                clear_output()
+                self.apply_a_dagger()
+                self.plot_psi()
+                
+        a_dagger_button.on_click(a_dagger_button_function)
+        
+        def reset_button_function(_):
+            with out:
+                clear_output()
+                self.init_psi()
+                self.plot_psi()
+        
+        reset_button.on_click(reset_button_function)
+        
+        out = widgets.Output()
+        reset_button_function('')
+        
+        display(widgets.HBox([a_button,a_dagger_button,reset_button] ),out)
         
