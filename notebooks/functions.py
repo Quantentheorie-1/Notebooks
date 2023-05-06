@@ -3,6 +3,8 @@ import matplotlib.pyplot as plt
 from ipywidgets import interact, interactive, fixed, interact_manual
 import ipywidgets as widgets
 from IPython.display import clear_output
+import plotly.graph_objects as go
+from plotly.subplots import make_subplots
 
 class Schroedinger_Equation:
     def __init__(self, hbar=1, m=1):
@@ -95,69 +97,71 @@ class Schroedinger_Equation:
             
     
     def plot_psi(self, t, potential_type):
-        fig, axs = plt.subplots(3)
-        fig.set_size_inches(10, 12)
-        #fig.suptitle('Freies Teilchen') # Variational title
-        
-        if potential_type=='Freies_Teilchen':
-            psi_x_pos = 0
-            psi_k_pos = 1
-            rho_pos = 2
-            
-        elif potential_type=='Barriere' or potential_type=='Glauber_Zustand':
-            psi_x_pos = 1
-            psi_k_pos = 2
-            rho_pos = 0
-        
-        
-        self.line1, = axs[psi_x_pos].plot(self.x_grid, np.real(self.psi_x[t]), 'red', label='Re($\psi(x,t)$)')
-        self.line2, = axs[psi_x_pos].plot(self.x_grid, np.imag(self.psi_x[t]), 'green', label='Im($\psi(x,t)$)')
-        
-        self.line3, = axs[psi_k_pos].plot(self.k_grid, np.real(self.psi_k[t]), 'red', label='Re($\~\psi(k,t)$)')
-        self.line4, = axs[psi_k_pos].plot(self.k_grid, np.imag(self.psi_k[t]), 'green', label='Im($\~\psi(k,t)$)')
-        
         rho_x = self.calculate_rho(self.psi_x)
-        self.line5, = axs[rho_pos].plot(self.x_grid, rho_x[t], 'black', label='$|\psi(x,t)|^2$')
         
+        fig = make_subplots(rows=3, cols=1,
+                            subplot_titles=['Wellenfunktion im Ortsraum', 'Wellenfunktion im Impulsraum',
+                                            'Aufenthaltswahrscheinlichkeit im Ortsraum'],
+                            )
         
-        if potential_type=='Barriere' or potential_type=='Glauber_Zustand':
-            axs[rho_pos].plot(self.x_grid, self.v_vector, 'blue', label='$V(x)$')
+        for time in range(self.Nt):
+            fig.add_trace(go.Scatter(x=self.x_grid, y=np.real(self.psi_x[time]), visible=False, 
+                                     name=r'$\text{Re}\left(\psi\left(x,t\right)\right)$'), 1, 1)
+            fig.add_trace(go.Scatter(x=self.x_grid, y=np.imag(self.psi_x[time]), visible=False, 
+                                     name=r'$\text{Im}\left(\psi\left(x,t\right)\right)$'), 1, 1)
+    
+            fig.add_trace(go.Scatter(x=self.k_grid, y=np.real(self.psi_k[time]), visible=False, 
+                                     name=r'$\text{Re}\left(\~\psi\left(k,t\right)\right)$'), 2, 1)
+            fig.add_trace(go.Scatter(x=self.k_grid, y=np.imag(self.psi_k[time]), visible=False, 
+                                     name=r'$\text{Im}\left(\~\psi\left(k,t\right)\right)$'), 2, 1)
+            
+            
+            fig.add_trace(go.Scatter(x=self.x_grid, y=rho_x[time], visible=False, 
+                                     name=r'$|\psi(x,t)|^2$'), 3, 1)
+    
+        fig.data[0].visible = True
+        fig.data[1].visible = True
+        fig.data[2].visible = True
+        fig.data[3].visible = True
+        fig.data[4].visible = True
+
+        if potential_type=='Barriere' or potential_type=='Glauber_Zustand': #Plot potential
+            fig.add_trace(go.Scatter(x=self.x_grid, y=self.v_vector, visible=True, 
+                                     name=r'$V(x)$'), 3, 1)      
         
+        steps = []
+        for i in range(0, 5*self.Nt, 5):
+            if potential_type=='Barriere' or potential_type=='Glauber_Zustand': # Potential always visible
+                step = dict(method="update", args=[{"visible": [False] * (5*self.Nt+1)}], label=str(i//5))
+                step["args"][0]["visible"][i:i+5] = [True,True,True,True,True]
+                step["args"][0]["visible"][-1] = True 
+            else:
+                step = dict(method="update", args=[{"visible": [False] * 5*self.Nt}], label=str(i//5))
+                step["args"][0]["visible"][i:i+5] = [True,True,True,True,True]
+            steps.append(step)
+            
+        slider = [dict(active=0, steps=steps, currentvalue={"prefix": "t="})]
+
+        fig.update_layout(sliders=slider, width=1000, height=800)
         
         if potential_type=='Freies_Teilchen':
-            axs[psi_x_pos].set_xlim([-5, 20])
-            axs[psi_k_pos].set_xlim([-5, 20])
-            axs[rho_pos].set_xlim([-5, 20])
+            fig.update_xaxes(range=[-5, 15])
+            fig.update_yaxes(range=[-1, 1])
             
         elif potential_type=='Barriere':
-            axs[psi_x_pos].set_xlim([self.xmin, self.xmax])
-            axs[psi_k_pos].set_xlim([self.kmin, self.kmax])
-            axs[rho_pos].set_xlim([self.xmin, self.xmax])
+            fig.update_xaxes(range=[-70, 70], row=1, col=1)
+            fig.update_xaxes(range=[-10, 10], row=2, col=1)
+            fig.update_xaxes(range=[-70, 70], row=3, col=1)
+            fig.update_yaxes(range=[-1, 1])
             
         elif potential_type=='Glauber_Zustand':
-            axs[psi_x_pos].set_xlim([self.xmin, self.xmax])
-            axs[psi_k_pos].set_xlim([-10, 10])
-            axs[rho_pos].set_xlim([self.xmin, self.xmax])  
+            fig.update_xaxes(range=[-5, 5])
+            fig.update_yaxes(range=[-1, 1])
         
-        axs[psi_x_pos].set_ylim([-1, 1])
-        axs[psi_k_pos].set_ylim([-1, 1])
-        axs[rho_pos].set_ylim([0, 1])
+        fig.update_yaxes(range=[0, 1], row=3, col=1)
         
-        plt.rcParams['font.size'] = '20'
-        
-        axs[0].legend(loc='upper right')
-        axs[1].legend(loc='upper right')
-        axs[2].legend(loc='upper right')
-        
-        def change_time(time=0):
-            self.line1.set_ydata(np.real(self.psi_x[time]))
-            self.line2.set_ydata(np.imag(self.psi_x[time]))
-            self.line3.set_ydata(np.real(self.psi_k[time]))
-            self.line4.set_ydata(np.imag(self.psi_k[time]))
-            self.line5.set_ydata(rho_x[time])
-        
-        interact(change_time, time = widgets.IntSlider(min=0, max=self.Nt-1, step=1, value=0))
-        
+        fig.show()
+  
         
     def solve(self, potential_type='Freies_Teilchen' ,v0=0, tmin=None, tmax=None, Nt=None, xmin=None, xmax=None, Nx=None, k0=None, d=None):
         # Check potential_type Input!!!
@@ -165,12 +169,12 @@ class Schroedinger_Equation:
         if tmin==None or tmax==None or Nt==None:
             if potential_type=='Freies_Teilchen':
                 tmin = 0
-                tmax = 4
-                Nt = 40
+                tmax = 5
+                Nt = 50
             elif potential_type=='Barriere':
                 tmin = 0
-                tmax = 200
-                Nt = 400
+                tmax = 100
+                Nt = 100
             elif potential_type=='Glauber_Zustand':
                 tmin = 0
                 tmax = 20
