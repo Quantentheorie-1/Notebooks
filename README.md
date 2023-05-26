@@ -114,21 +114,117 @@ Versuchen sie nun folgende Fragen mit analytischen Überlegungen und numerischen
 
 ### Teilchen an der Potentialbarriere (vgl. 3.4 im Skriptum)
 
+Nun betrachten wir die Zeitentwicklung eines Gaußschen Wellenpaketes, welches auf eine Potentialbarriere trifft. 
+Die Potentialbarriere definieren wir als Gaußsche Glockenkurve:
 
+$$V(x)= v_0  e^{-(x-x_0)^2/b^2}$$
+
+mit $v_0$ als Höhe der Potentialbarriere, $x_0$ als die Position des Maximums des Potentials und $b$ für die Breite der Potentialbarriere. Damit ist auch der lokale Potentialoperator gegeben als
+
+$$\hat{V} = v_0  e^{-(x-x_0)^2/b^2}$$.
+
+Die Wellenfunktion wird analog zum Fall des freien Teilchens initialisiert. 
+
+Der Zeitentwicklungsoperator $e^{-\frac{i}{\hbar}\hat{T}(t-t_0)}$ wird nun wie oben beschrieben aufgeteilt. 
+
+$$e^{-\frac{i}{\hbar} \hat{H}\Delta t} \approx e^{-\frac{i}{\hbar} \frac{\hat{T}}{2}\Delta t}  e^{-\frac{i}{\hbar} \hat{V} \Delta t} e^{-\frac{i}{\hbar} \frac{\hat{T}}{2}\Delta t}$$
+
+Der Potentialterm des Zeitentwicklungsoperators nimmt nun im Ortsraum die Form 
+$e^{-\frac{i}{\hbar} \hat{V}} = e^{-\frac{i}{\hbar} v_0 e^{-(x-x_0)^2/b^2}}$ an. 
+Die zwei kinetischen Terme sind im Impulsraum gegeben als 
+$e^{-\frac{i}{\hbar}\frac{\hat{T}}{2}\Delta t} = e^{-\frac{i}{\hbar}\frac{\hbar^2 k^2}{2 m}\frac{\Delta t}{2}}$.
+
+Hier ist zu beachten, dass ein Term des Zeitentwicklungsoperators im Ortsraum gegeben ist, während die anderen beiden Teile im Imoulsraum gegeben sind. Damit diese Terme auf die Wellenfunktion wirken können, muss auch die Wellenfunktion im entsprechenden Raum gegeben sein. Daher muss die Wellenfunktion mithilfe von Fourier-Transformationen in die jeweilige Darstellung gebracht werden. Insgesamt stellt sich die Anwednung das Zeitentwicklungsoperators auf $\tilde{\Psi}(k,t)$ also folgendermaßen dar:
+- Anwendung von $e^{-\frac{i}{\hbar}\frac{\hat{T}}{2}\Delta t}$
+- Inverse Fourier Transformation in den Ortsraum
+- Anwendung von $e^{-\frac{i}{\hbar} \hat{V}}$
+- Fourier Transformation in den Impulsraum
+- Anwendung von $e^{-\frac{i}{\hbar}\frac{\hat{T}}{2}\Delta t}$
+
+
+Versuchen sie nun folgende Fragen mit analytischen Überlegungen und numerischen Experimenten zu beantworten:
+- Was beobachten sie, wenn sie den Parameter $v_0$ vergrößern/verkleinern?
+- Was passiert im Grenzfall $v_0 \rightarrow 0$ ?
+- Was passiert im Grenzfall $v_0 \rightarrow \infty$ ?
+- Vergleichen sie die Wellenfunktion im Impulsraum vor und nach der Streuung. Was können sie daraus für die Bewegung der Wellenfunktion im Ortsraum schließen?
+
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Quantentheorie-1/Notebooks/blob/Projektarbeit_Ranner/notebooks/TD-Schroedinger-Barriere_v2.ipynb)
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Quantentheorie-1/Notebooks/blob/main/notebooks/TD-Schroedinger-Barriere.ipynb)
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/Quantentheorie-1/Notebooks/HEAD?labpath=notebooks%2FTD-Schroedinger-Barriere.ipynb)
 
 
 ### Leiteroperatoren zur algebraischen Lösung des harmonischen Oszillators (vgl. 5.2.1 im Skriptum)
 
+Wir visualisieren nun die Wirkung der Leiteroperatoren auf die Wellenfunktionen der Lösungen des harmonischen Oszillators mit Potential $V(x) = \frac{1}{2}m\omega^2 x^2$. Dafür starten wir mit der Wellenfunktion im Grundzustand $\psi_0 (x)$, welche (auf eins normiert) folgendermaßen gegeben ist:
+
+$$
+\psi_0 (x) = \frac{m\omega}{\sqrt{2\pi\hbar^2} } e^{-\frac{1}{2} \frac{m\omega}{\hbar} x^2}
+$$
+
+Auf diese Wellenfunktion können wir nun die Aufsteige- und Absteigeoperatoren wirken lassen, welche folgendermaßen definiert sind:
+
+$$
+\hat{a}^{\dagger} = \frac{1}{\sqrt{2}} \left( \sqrt{\frac{m\omega}{\hbar}} x - \sqrt{\frac{\hbar}{m\omega}} \frac{d}{dx}\right)
+$$
+
+$$
+\hat{a} = \frac{1}{\sqrt{2}} \left( \sqrt{\frac{m\omega}{\hbar}} x + \sqrt{\frac{\hbar}{m\omega}} \frac{d}{dx}\right)
+$$
+
+Dargestellt wird jeweils die Wellenfunktion, sowie die Aufenthaltswahrscheinlichkeit $\rho (x) = |\psi(x)|^2$.
+
+Versuchen sie nun folgende Fragen mit analytischen Überlegungen und numerischen Experimenten zu beantworten:
+- Prüfen sie anhand der Graphen, ob $\hat{a}$ und $\hat{a}^{dagger}$ kommutieren.
+- Was passiert, wenn sie den Absteigeoperator auf den Grundzustand anwenden?
+- Ist es möglich, nach Anwendung von $\hat{a}$ auf den Grundzustand, diesen durch Anwendung von $\hat{a}^{\dagger}$ wiederherzustellen?
+
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Quantentheorie-1/Notebooks/blob/Projektarbeit_Ranner/notebooks/Ladder-Operators_v2.ipynb)
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Quantentheorie-1/Notebooks/blob/main/notebooks/Ladder-Operators.ipynb)
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/Quantentheorie-1/Notebooks/HEAD?labpath=notebooks%2FLadder-Operators.ipynb)
 
 
 ### Kohärente Glauber-Zustände (vgl. 5.3.2 im Skriptum)
 
+Hier betrachten wir die zeitliche Entwicklung von kohärenten Glauber-Zuständen im Potential $V(x)=\frac{x^2}{2}$. Für $t=0$ ist die Wellenfunktion des kohärenten Zustandes im Ortsraum gegeben als:
+
+$$
+\Psi(x,0) = \frac{1}{2} e^{ipx/\hbar}e^{-(x-q)^2/2}
+$$
+
+Why tho???
+
+$p$ und $q$ bezeichnen die Erwartungswerte von Impuls und Ort, wobei wir den Erwartungswertes des Ortes auf $q=0$ setzen. 
+
+Danach wird analog zum Fall des Teilchens an der Potentialbarriere die Zeitentwicklung des Zustandes im Potential berechnet. 
+
+Was beobachten sie, wenn sie den Parameter $p$ vergrößern/verkleinern?
+- Was passiert im Grenzfall $p \rightarrow 0$ ?
+- Was passiert im Grenzfall $p \rightarrow \infty$ ? Denken sie daran, dass es sich hier um eine numerische Simulation handelt.
+
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Quantentheorie-1/Notebooks/blob/Projektarbeit_Ranner/notebooks/TD-Schroedinger-Glauber_v2.ipynb)
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Quantentheorie-1/Notebooks/blob/main/notebooks/TD-Schroedinger-Glauber.ipynb)
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/Quantentheorie-1/Notebooks/HEAD?labpath=notebooks%2FTD-Schroedinger-Glauber.ipynb)
 
+### Kugelflächenfunktionen (vgl 6.3.2 im Skriptum)
 
+Mit diesem Notebook können sie die Kugelflächenfunktionen für $l \in [0,3]$ als interaktives 3D plot darstellen. Die Kugelflächenfunktion sind durch 
 
+$$
+Y_l^m(\theta, \phi) = \frac{1}{\sqrt{2\pi}}N_l^m P_l^m\left(cos\theta\right) e^{im\phi}
+$$
+
+gegeben, mit
+
+$$
+N_l^m = \sqrt{\frac{2l+1}{2}\frac{(l-m)!}{(l+m)!}},
+$$
+
+$$
+P_l^m(x) = \frac{(-1)^m}{2^l l!} (1-x^2)^{\frac{m}{2}} \frac{d^{l+m}}{dx^{l+m}}(x^2-1)^l.
+$$
+
+Gezeigt werden zwei unterschiedliche Darstellungsformen des Realteiles von $Y_l^m$. In der ersten Darstellung gibt die Entfernung eines Flächenpunktes vom Ursprung den Betrag von $Re(Y_l^m)$ in die jeweilige Raumrichtung an. Raumrichtungen, in denen $Re(Y_l^m)$ positiv ist, werden mit rot gekennzeichnet, und jene wo $Re(Y_l^m)$ negativ ist mit blau. 
+
+In der zweiten Darstellung wird der Wert von $Re(Y_l^m)$ mithilfe einer colormap auf der Einheitskugel dargestellt. 
+
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Quantentheorie-1/Notebooks/blob/Projektarbeit_Ranner/notebooks/Kugelflächenfunktionen.ipynb)

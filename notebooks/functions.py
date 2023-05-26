@@ -1,6 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
-from ipywidgets import interact, interactive, fixed, interact_manual
+#from ipywidgets import interact, interactive, fixed, interact_manual
 import ipywidgets as widgets
 from IPython.display import clear_output
 import plotly.graph_objects as go
@@ -12,7 +12,7 @@ class Schroedinger_Equation:
         self.m = m
         
         
-    def initialize_grid(self, potential_type, tmin, tmax, Nt, xmin, xmax, Nx, k0=1, d=1):
+    def initialize_grid(self, potential_type, tmin, tmax, Nt, xmin, xmax, Nx, k0=1, d=1, p=0.5):
         self.t_grid = np.linspace(tmin, tmax, Nt) #
         self.dt = self.t_grid[1] - self.t_grid[0]
         
@@ -37,7 +37,6 @@ class Schroedinger_Equation:
         
         
         if potential_type == 'Glauber_Zustand':
-            p=0.5  # Make variable
             q=0   
             self.psi_x[0] = 0.5 * np.exp(1j*self.x_grid*p/self.hbar) * np.exp(-0.5*(self.x_grid-q)**2)  # No Pi factor?
             self.psi_k[0] = self.discrete_fourier_trafo(self.psi_x[0])
@@ -111,9 +110,9 @@ class Schroedinger_Equation:
                                      name=r'$\text{Im}\left(\psi\left(x,t\right)\right)$'), 1, 1)
     
             fig.add_trace(go.Scatter(x=self.k_grid, y=np.real(self.psi_k[time]), visible=False, 
-                                     name=r'$\text{Re}\left(\~\psi\left(k,t\right)\right)$'), 2, 1)
+                                     name=r'$\text{Re}\left(\tilde{\psi}\left(k,t\right)\right)$'), 2, 1)
             fig.add_trace(go.Scatter(x=self.k_grid, y=np.imag(self.psi_k[time]), visible=False, 
-                                     name=r'$\text{Im}\left(\~\psi\left(k,t\right)\right)$'), 2, 1)
+                                     name=r'$\text{Im}\left(\tilde{\psi}\left(k,t\right)\right)$'), 2, 1)
             
             
             fig.add_trace(go.Scatter(x=self.x_grid, y=rho_x[time], visible=False, 
@@ -146,24 +145,33 @@ class Schroedinger_Equation:
         
         if potential_type=='Freies_Teilchen':
             fig.update_xaxes(range=[-5, 15])
-            fig.update_yaxes(range=[-1, 1])
+            #fig.update_yaxes(range=[-1, 1])
             
         elif potential_type=='Barriere':
-            fig.update_xaxes(range=[-70, 70], row=1, col=1)
+            fig.update_xaxes(range=[-50, 90], row=1, col=1)
             fig.update_xaxes(range=[-10, 10], row=2, col=1)
-            fig.update_xaxes(range=[-70, 70], row=3, col=1)
-            fig.update_yaxes(range=[-1, 1])
+            fig.update_xaxes(range=[-50, 90], row=3, col=1)
+            #fig.update_yaxes(range=[-1, 1])
             
         elif potential_type=='Glauber_Zustand':
             fig.update_xaxes(range=[-5, 5])
-            fig.update_yaxes(range=[-1, 1])
+            fig.update_xaxes(range=[-10, 10], row=2, col=1)
+            #fig.update_yaxes(range=[-1, 1])
         
-        fig.update_yaxes(range=[0, 1], row=3, col=1)
+        psi_x_min = min([np.real(self.psi_x).min(),np.imag(self.psi_x).min()])
+        psi_x_max = max([np.real(self.psi_x).max(),np.imag(self.psi_x).max()])
+        fig.update_yaxes(range=[psi_x_min-0.02, psi_x_max+0.02], row=1, col=1)
+        
+        psi_k_min = min([np.real(self.psi_k).min(),np.imag(self.psi_k).min()])
+        psi_k_max = max([np.real(self.psi_k).max(),np.imag(self.psi_k).max()])
+        fig.update_yaxes(range=[psi_k_min-0.02, psi_k_max+0.02], row=2, col=1)
+        
+        fig.update_yaxes(range=[rho_x.min()-0.02, rho_x.max()+0.02], row=3, col=1)
         
         fig.show()
   
         
-    def solve(self, potential_type='Freies_Teilchen' ,v0=0, tmin=None, tmax=None, Nt=None, xmin=None, xmax=None, Nx=None, k0=None, d=None):
+    def solve(self, potential_type='Freies_Teilchen' ,v0=0, tmin=None, tmax=None, Nt=None, xmin=None, xmax=None, Nx=None, k0=None, d=None, p=0.5):
         # Check potential_type Input!!!
         
         if tmin==None or tmax==None or Nt==None:
@@ -212,7 +220,7 @@ class Schroedinger_Equation:
                 d = 2
         
         
-        self.initialize_grid(potential_type, tmin, tmax, Nt, xmin, xmax, Nx, k0, d)
+        self.initialize_grid(potential_type, tmin, tmax, Nt, xmin, xmax, Nx, k0, d, p)
         
         self.split_operator_method(potential_type, v0)
         
@@ -223,9 +231,10 @@ class Schroedinger_Equation:
 
         
 class leiter_operatoren():
-    def __init__(self, hbar=1, m=1, x_min=-10, x_max=10, Nx=2**9):
+    def __init__(self, hbar=1, m=1, omega=1, x_min=-10, x_max=10, Nx=2**9):
         self.hbar = hbar
         self.m = m
+        self.omega=omega
     
         self.x_min = x_min
         self.x_max = x_max
@@ -234,9 +243,10 @@ class leiter_operatoren():
         self.dx = (x_max-x_min)/(Nx)#Nx-1???
         self.x_grid = np.arange(self.x_min,self.x_max,self.dx)
     
-    def init_psi(self, x0=1):
-        self.psi = np.zeros(self.Nx,dtype=complex)
-        self.psi[:] = np.exp( -(self.x_grid/x0)**2 / 2 ) * np.sqrt(1/np.pi*x0) # not 1./np.sqrt(x0*np.sqrt(np.pi))?
+    def init_psi(self):
+        self.psi = np.zeros(self.Nx, dtype=complex)
+        self.psi[:] = self.m * self.omega / (np.sqrt(2*np.pi) * self.hbar) * np.exp( - self.m * self.omega * self.x_grid**2 / (2 * self.hbar) )
+        self.n = 0
     
     def diff_psi(self, psi):
         d_psi = np.zeros(self.Nx,dtype=complex)
@@ -248,11 +258,26 @@ class leiter_operatoren():
     
     def apply_a(self):
         d_psi = self.diff_psi(self.psi)
-        self.psi = (d_psi + self.x_grid * self.psi) / np.sqrt(2)
+        self.psi = (np.sqrt(self.m * self.omega / self.hbar) * self.x_grid * self.psi + np.sqrt(self.hbar / (self.m * self.omega)) * d_psi) / np.sqrt(2)
+        self.norm_a()
+        self.n += -1
+        
     
     def apply_a_dagger(self):
         d_psi = self.diff_psi(self.psi)
-        self.psi = (-d_psi + self.x_grid * self.psi) / np.sqrt(2)
+        self.psi = ( np.sqrt(self.m * self.omega / self.hbar) * self.x_grid * self.psi - np.sqrt(self.hbar / (self.m * self.omega)) * d_psi) / np.sqrt(2)
+        self.norm_a_dagger()
+        self.n += 1
+    
+    def norm_a(self):
+        if self.n > 0:
+            self.psi = self.psi / np.sqrt(self.n)
+        #else: return self.psi
+        
+    def norm_a_dagger(self):
+        if self.n > 0:
+            self.psi= self.psi / np.sqrt(self.n+1)
+        #else: return psi
     
     def calc_rho(self,psi):
         return np.abs(psi)**2
@@ -260,55 +285,67 @@ class leiter_operatoren():
     def plot_psi(self):
         rho = self.calc_rho(self.psi)
         
-        fig, axs = plt.subplots(2)
-        axs[0].plot(self.x_grid, np.real(self.psi[:]), "red", label='Re[$\psi(x,t)$]')
-        axs[0].plot(self.x_grid, np.imag(self.psi[:]), "green", label='Im[$\psi(x,t)$]')
-
-        axs[1].plot(self.x_grid, rho[:], "black", label='$|\psi(x,t)|^2$')
+        fig = make_subplots(rows=2, cols=1,
+                            subplot_titles=['Wellenfunktion im Ortsraum', 'Aufenthaltswahrscheinlichkeit im Ortsraum'],
+                            )
+        
+        fig.add_trace(go.Scatter(x=self.x_grid, y=np.real(self.psi[:]), 
+                                 name=r'$\text{Re}\left(\psi\left(x,t\right)\right)$'), 1, 1)
+        fig.add_trace(go.Scatter(x=self.x_grid, y=np.imag(self.psi[:]),
+                                 name=r'$\text{Im}\left(\psi\left(x,t\right)\right)$'), 1, 1)
+        fig.add_trace(go.Scatter(x=self.x_grid, y=rho[:],
+                                 name=r'$|\psi(x,t)|^2$'), 2, 1)
+        
+        fig.update_xaxes(range=[self.x_min, self.x_max])
+        fig.update_yaxes(range=[-0.5, 0.5])
+        fig.update_yaxes(range=[0,0.5],row=2,col=1)
+        fig.update_layout(width=1000, height=700)
+        fig.show()
     
-        axs[0].legend(loc='upper right')
-        axs[1].legend(loc='upper right')
-        fig.set_size_inches(10, 9)
-    
-        axs[0].set_xlim([self.x_min, self.x_max])
-        axs[1].set_xlim([self.x_min, self.x_max])
-
-        plt.rcParams['font.size'] = '20'
-        plt.show()
     
     def display(self):
-        self.init_psi()
-        
         a_button = widgets.Button(description='Absteiger')
         a_dagger_button = widgets.Button(description='Aufsteiger')
         reset_button = widgets.Button(description='Reset')
-        
-        def a_button_function(_):
+
+        def a_button_function(click_input):
             with out:
                 clear_output()
                 self.apply_a()
                 self.plot_psi()
-                
+                        
         a_button.on_click(a_button_function)
-        
-        def a_dagger_button_function(_):
+
+        def a_dagger_button_function(click_input):
             with out:
                 clear_output()
                 self.apply_a_dagger()
                 self.plot_psi()
                 
         a_dagger_button.on_click(a_dagger_button_function)
-        
-        def reset_button_function(_):
+                
+        def reset_button_function(click_input):
             with out:
                 clear_output()
                 self.init_psi()
                 self.plot_psi()
-        
+                
         reset_button.on_click(reset_button_function)
-        
+
         out = widgets.Output()
         reset_button_function('')
-        
+
+        #### Not visible figure because Colab cannot deal with these buttons plus plotly figures at once ####
+        #### But with this its tricked into being displayed properly ########################################
+        fig_placeholder = go.Figure()
+        fig_placeholder.add_trace(go.Scatter(x=[1], y=[1], 
+                                     ))
+        fig_placeholder.update_layout(width=10, height=10)
+        fig_placeholder.show()
+        ######################################################################################################
+
         display(widgets.HBox([a_button,a_dagger_button,reset_button] ),out)
+
+        reset_button_function(1)
+    
         
