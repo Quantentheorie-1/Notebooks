@@ -174,7 +174,7 @@ $$
 Dargestellt wird jeweils die Wellenfunktion, sowie die Aufenthaltswahrscheinlichkeit $\rho (x) = |\psi(x)|^2$.
 
 Versuchen sie nun folgende Fragen mit analytischen Überlegungen und numerischen Experimenten zu beantworten:
-- Prüfen sie anhand der Graphen, ob $\hat{a}$ und $\hat{a}^{dagger}$ kommutieren.
+- Prüfen sie anhand der Graphen, ob $\hat{a}$ und $\hat{a}^{\dagger}$ kommutieren.
 - Was passiert, wenn sie den Absteigeoperator auf den Grundzustand anwenden?
 - Ist es möglich, nach Anwendung von $\hat{a}$ auf den Grundzustand, diesen durch Anwendung von $\hat{a}^{\dagger}$ wiederherzustellen?
 
