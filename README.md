@@ -105,8 +105,7 @@ Versuchen sie nun folgende Fragen mit analytischen Überlegungen und numerischen
 - Was passiert im Grenzfall $d \rightarrow 0$ ?
 - Was passiert im Grenzfall $d \rightarrow \infty$ ?
 
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Quantentheorie-1/Notebooks/blob/Projektarbeit_Ranner/notebooks/TD-Free-Schroedinger_v2.ipynb)
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Quantentheorie-1/Notebooks/blob/main/notebooks/TD-Free-Schroedinger.ipynb)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Quantentheorie-1/Notebooks/blob/Projektarbeit_Ranner/notebooks/TD-Free-Schroedinger.ipynb)
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/Quantentheorie-1/Notebooks/HEAD?labpath=notebooks%2FTD-Free-Schroedinger.ipynb)
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/Quantentheorie-1/Notebooks/HEAD?labpath=notebooks%2FTD-Free-Schroedinger_v2.ipynb)
 
@@ -148,8 +147,7 @@ Versuchen sie nun folgende Fragen mit analytischen Überlegungen und numerischen
 - Was passiert im Grenzfall $v_0 \rightarrow \infty$ ?
 - Vergleichen sie die Wellenfunktion im Impulsraum vor und nach der Streuung. Was können sie daraus für die Bewegung der Wellenfunktion im Ortsraum schließen?
 
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Quantentheorie-1/Notebooks/blob/Projektarbeit_Ranner/notebooks/TD-Schroedinger-Barriere_v2.ipynb)
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Quantentheorie-1/Notebooks/blob/main/notebooks/TD-Schroedinger-Barriere.ipynb)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Quantentheorie-1/Notebooks/blob/Projektarbeit_Ranner/notebooks/TD-Schroedinger-Barriere.ipynb)
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/Quantentheorie-1/Notebooks/HEAD?labpath=notebooks%2FTD-Schroedinger-Barriere.ipynb)
 
 
@@ -178,8 +176,7 @@ Versuchen sie nun folgende Fragen mit analytischen Überlegungen und numerischen
 - Was passiert, wenn sie den Absteigeoperator auf den Grundzustand anwenden?
 - Ist es möglich, nach Anwendung von $\hat{a}$ auf den Grundzustand, diesen durch Anwendung von $\hat{a}^{\dagger}$ wiederherzustellen?
 
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Quantentheorie-1/Notebooks/blob/Projektarbeit_Ranner/notebooks/Ladder-Operators_v2.ipynb)
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Quantentheorie-1/Notebooks/blob/main/notebooks/Ladder-Operators.ipynb)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Quantentheorie-1/Notebooks/blob/Projektarbeit_Ranner/notebooks/Ladder-Operators.ipynb)
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/Quantentheorie-1/Notebooks/HEAD?labpath=notebooks%2FLadder-Operators.ipynb)
 
 
@@ -201,8 +198,7 @@ Was beobachten sie, wenn sie den Parameter $p$ vergrößern/verkleinern?
 - Was passiert im Grenzfall $p \rightarrow 0$ ?
 - Was passiert im Grenzfall $p \rightarrow \infty$ ? Denken sie daran, dass es sich hier um eine numerische Simulation handelt.
 
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Quantentheorie-1/Notebooks/blob/Projektarbeit_Ranner/notebooks/TD-Schroedinger-Glauber_v2.ipynb)
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Quantentheorie-1/Notebooks/blob/main/notebooks/TD-Schroedinger-Glauber.ipynb)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Quantentheorie-1/Notebooks/blob/Projektarbeit_Ranner/notebooks/TD-Schroedinger-Glauber.ipynb)
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/Quantentheorie-1/Notebooks/HEAD?labpath=notebooks%2FTD-Schroedinger-Glauber.ipynb)
 
 ### Kugelflächenfunktionen (vgl 6.3.2 im Skriptum)
