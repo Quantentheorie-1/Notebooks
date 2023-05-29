@@ -118,9 +118,9 @@ Die Potentialbarriere definieren wir als Gaußsche Glockenkurve:
 
 $$V(x)= v_0  e^{-(x-x_0)^2/b^2}$$
 
-mit $v_0$ als Höhe der Potentialbarriere, $x_0$ als die Position des Maximums des Potentials und $b$ für die Breite der Potentialbarriere. Damit ist auch der lokale Potentialoperator gegeben als
+mit $v_0$ als Höhe der Potentialbarriere, $x_0$ als die Position des Maximums des Potentials und $b$ als die Breite der Potentialbarriere. Damit ist auch der lokale Potentialoperator gegeben als
 
-$$\hat{V} = v_0  e^{-(x-x_0)^2/b^2}$$.
+$$\hat{V} = v_0  e^{-(x-x_0)^2/b^2}.$$
 
 Die Wellenfunktion wird analog zum Fall des freien Teilchens initialisiert. 
 
@@ -133,7 +133,7 @@ $e^{-\frac{i}{\hbar} \hat{V}} = e^{-\frac{i}{\hbar} v_0 e^{-(x-x_0)^2/b^2}}$ an.
 Die zwei kinetischen Terme sind im Impulsraum gegeben als 
 $e^{-\frac{i}{\hbar}\frac{\hat{T}}{2}\Delta t} = e^{-\frac{i}{\hbar}\frac{\hbar^2 k^2}{2 m}\frac{\Delta t}{2}}$.
 
-Hier ist zu beachten, dass ein Term des Zeitentwicklungsoperators im Ortsraum gegeben ist, während die anderen beiden Teile im Imoulsraum gegeben sind. Damit diese Terme auf die Wellenfunktion wirken können, muss auch die Wellenfunktion im entsprechenden Raum gegeben sein. Daher muss die Wellenfunktion mithilfe von Fourier-Transformationen in die jeweilige Darstellung gebracht werden. Insgesamt stellt sich die Anwednung das Zeitentwicklungsoperators auf $\tilde{\Psi}(k,t)$ also folgendermaßen dar:
+Damit diese Terme auf die Wellenfunktion in der jeweils passenden Darstellung wirken können, muss auch die Wellenfunktion im entsprechenden Raum gegeben sein. Daher muss die Wellenfunktion mithilfe von Fourier-Transformationen in die jeweilige Darstellung gebracht werden. Insgesamt stellt sich die Anwednung das Zeitentwicklungsoperators auf $\tilde{\Psi}(k,t)$ also folgendermaßen dar:
 - Anwendung von $e^{-\frac{i}{\hbar}\frac{\hat{T}}{2}\Delta t}$
 - Inverse Fourier Transformation in den Ortsraum
 - Anwendung von $e^{-\frac{i}{\hbar} \hat{V}}$
