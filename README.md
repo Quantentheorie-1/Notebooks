@@ -201,7 +201,7 @@ Was beobachten sie, wenn sie den Parameter $p$ vergrößern/verkleinern?
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Quantentheorie-1/Notebooks/blob/Projektarbeit_Ranner/notebooks/TD-Schroedinger-Glauber.ipynb)
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/Quantentheorie-1/Notebooks/HEAD?labpath=notebooks%2FTD-Schroedinger-Glauber.ipynb)
 
-### Kugelflächenfunktionen (vgl 6.3.2 im Skriptum)
+## Kugelflächenfunktionen (vgl 6.3.2 im Skriptum)
 
 Mit diesem Notebook können sie die Kugelflächenfunktionen für $l \in [0,3]$ als interaktives 3D plot darstellen. Die Kugelflächenfunktion sind durch 
 
@@ -224,3 +224,24 @@ Gezeigt werden zwei unterschiedliche Darstellungsformen des Realteiles von $Y_l^
 In der zweiten Darstellung wird der Wert von $Re(Y_l^m)$ mithilfe einer colormap auf der Einheitskugel dargestellt. 
 
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Quantentheorie-1/Notebooks/blob/Projektarbeit_Ranner/notebooks/Kugelflächenfunktionen.ipynb)
+
+# Quantentheorie II
+
+## Harmonische Störung (vgl. 5.4.4 im Skriptum)
+
+Wir betrachten eine harmonische Störung in zeitabhängiger Störungstheorie. Zum Zeitpunkt $t=0$ wird ein harmonisches Störpotential der Form $\hat{V}(t)=\hat{V}_0 sin(\omega t)$ eingeschalten. Für den Übergang vom Zustand $|\phi_i\rangle$ in den Zustand $|\phi_f\rangle$ (mit Energiedifferenz $\epsilon_{if}=\hbar\omega_{if}$) ist die Übergangswahrscheinlichkeit in erster Ordnung, $P^{(1)}_{if}$, folgendermaßen gegeben:
+
+$$
+P^{(1)}_{if} \propto 
+\frac{sin^2(\frac{\omega_{if}+\omega}{2}t)}{\frac{(\omega_{if}+\omega)^2}{4}} + 
+\frac{sin^2(\frac{\omega_{if}-\omega}{2}t)}{\frac{(\omega_{if}-\omega)^2}{4}} - 
+2 \frac{sin(\frac{\omega_{if}+\omega}{2}t) sin(\frac{\omega_{if}-\omega}{2}t)}
+{\frac{(\omega_{if}+\omega)(\omega_{if}-\omega)}{4}} cos(2\omega t)
+$$
+
+Die Übergangswahrscheinlichkeit ist von drei Variablen ($t$, $\omega$ und $\omega_{if}$) abhängig. Zur Visualisierung wird die zeitliche Abhängigkeit von $P_{if}^{(1)}(\omega)$ für festgehaltenes $\omega_{if}$ und von $P_{if}^{(1)}(\omega_{if})$ für festgehaltenes $\omega$ animiert.
+
+- Vergleichen sie bei $P_{if}^{(1)}(\omega_{if})$ die Interferenzen zwischen den beiden Peaks für verschiedene Werte von $\omega$.
+- Man beachte die lange Periodizität in $t$, $P_{if}^{(1)}(\omega_{if})$ wird erst ungefähr bei $t\approx 1000$ wieder konstant null, bei $P_{if}^{(1)}(\omega)$ passiert dies erst nach doppelt so langer Zeit.
+
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Quantentheorie-1/Notebooks/blob/Projektarbeit_Ranner/notebooks/Harmonische_Störung.ipynb)
