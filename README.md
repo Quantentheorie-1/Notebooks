@@ -185,12 +185,24 @@ Versuchen sie nun folgende Fragen mit analytischen Überlegungen und numerischen
 Hier betrachten wir die zeitliche Entwicklung von kohärenten Glauber-Zuständen im Potential $V(x)=\frac{x^2}{2}$. Für $t=0$ ist die Wellenfunktion des kohärenten Zustandes im Ortsraum gegeben als:
 
 $$
-\Psi(x,0) = \frac{1}{2} e^{ipx/\hbar}e^{-(x-q)^2/2}
+\Psi(x,0) = \frac{1}{2} e^{ipx/\hbar}e^{-(x)^2/(2\hbar)}
 $$
 
-Why tho???
+$p$ bezeichnet den Erwartungswert des Impulses.
+Kohärente Glauber-Zustände sind als Eigenzustände des Absteigeoperators definiert. Der Absteigeoperator im Ortsraum ist gegeben als
 
-$p$ und $q$ bezeichnen die Erwartungswerte von Impuls und Ort, wobei wir den Erwartungswertes des Ortes auf $q=0$ setzen. 
+$$
+\hat{a} = \frac{1}{\sqrt{2}} \left( \sqrt{\frac{m\omega}{\hbar}} x + \sqrt{\frac{\hbar}{m\omega}} \frac{d}{dx}\right)
+$$
+
+Lässt man diesen nun auf $\Psi(x,0)$ wirken, erhält man:
+
+$$
+\hat{a}\Psi(x,0) = \frac{i p}{\sqrt{2}\hbar} \frac{1}{2} e^{ipx/\hbar}e^{-(x)^2/(2\hbar)} 
+= \frac{i p}{\sqrt{2}\hbar} \Psi(x,0)
+$$
+
+Somit ist gezeigt, dass $\Psi(x,0)$ tatsächlich ein Glauber-Zustand ist. 
 
 Danach wird analog zum Fall des Teilchens an der Potentialbarriere die Zeitentwicklung des Zustandes im Potential berechnet. 
 
@@ -229,10 +241,10 @@ In der zweiten Darstellung wird der Wert von $Re(Y_l^m)$ mithilfe einer colormap
 
 ## Harmonische Störung (vgl. 5.4.4 im Skriptum)
 
-Wir betrachten eine harmonische Störung in zeitabhängiger Störungstheorie. Zum Zeitpunkt $t=0$ wird ein harmonisches Störpotential der Form $\hat{V}(t)=\hat{V}_0 sin(\omega t)$ eingeschalten. Für den Übergang vom Zustand $|\phi_i\rangle$ in den Zustand $|\phi_f\rangle$ (mit Energiedifferenz $\epsilon_{if}=\hbar\omega_{if}$) ist die Übergangswahrscheinlichkeit in erster Ordnung, $P^{(1)}_{if}$, folgendermaßen gegeben:
+Wir betrachten eine harmonische Störung in zeitabhängiger Störungstheorie. Zum Zeitpunkt $t=0$ wird ein harmonisches Störpotential der Form $\hat{V}(t)=\hat{V} _ {0} sin(\omega t)$ eingeschalten. Für den Übergang vom Zustand $|\phi_i\rangle$ in den Zustand $|\phi_f\rangle$ (mit Energiedifferenz $\epsilon_{if}=\hbar\omega_{if}$) ist die Übergangswahrscheinlichkeit in erster Ordnung, $P^{(1)}_ {if}$, folgendermaßen gegeben:
 
 $$
-P^{(1)}_{if} \propto 
+P^{(1)}_ {if} \propto 
 \frac{sin^2(\frac{\omega_{if}+\omega}{2}t)}{\frac{(\omega_{if}+\omega)^2}{4}} + 
 \frac{sin^2(\frac{\omega_{if}-\omega}{2}t)}{\frac{(\omega_{if}-\omega)^2}{4}} - 
 2 \frac{sin(\frac{\omega_{if}+\omega}{2}t) sin(\frac{\omega_{if}-\omega}{2}t)}
