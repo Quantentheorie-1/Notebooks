@@ -81,6 +81,7 @@ $$
 $$
 
 Daraus wiederum folgt: 
+
 $$
 2 k a=2\pi n \Rightarrow k=\frac{\pi}{a}n, \: n\in \mathbb{Z},
 $$
