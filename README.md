@@ -83,7 +83,7 @@ $$
 Daraus wiederum folgt: 
 
 $$
-2 k a=2\pi n \Rightarrow k=\frac{\pi}{a}n, \: n\in \mathbb{Z},
+2 k a=2\pi n \Rightarrow k=\frac{\pi}{a}n,  n\in \mathbb{Z},
 $$
 
 also, dass $k$ nur diese diskreten Werte annehmen kann. Für das diskrete Gitter des Impulsraumes wählen wir daher einen Abstand von $\frac{\pi}{a}$, und verteilen die Gitterpunkte wie im Ortsraum gleichmäßig um null.
