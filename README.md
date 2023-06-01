@@ -4,7 +4,7 @@ Dieses Repository enthält Jupyter Notebooks, die zur Begleitung der
 **Quantentheorie I Vorlesung mit Übung** an der Technischen Universität Wien zur Verfügung gestellt
 werden. Die frei verfügbaren Jupyter Notebooks dienen der Visualisierung und Durchführung
 von "numerischen Experimenten", wodurch ein besseres Verständnis
-der Quantentheorie ermöglicht werden soll. Es wird vorausgesetzt das Studierende Parallel dazu,
+der Quantentheorie ermöglicht werden soll. Es wird vorausgesetzt das Studierende Parallel dazu
 die Vorlesung und Rechenübungen besuchen.
 
 Die verwendeten Algorithmen und numerischen Verfahren erlauben es auch analytisch nicht exakt lösbare
@@ -106,9 +106,6 @@ Versuchen sie nun folgende Fragen mit analytischen Überlegungen und numerischen
 - Was passiert im Grenzfall $d \rightarrow \infty$ ?
 
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Quantentheorie-1/Notebooks/blob/Projektarbeit_Ranner/notebooks/TD-Free-Schroedinger.ipynb)
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/Quantentheorie-1/Notebooks/HEAD?labpath=notebooks%2FTD-Free-Schroedinger.ipynb)
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/Quantentheorie-1/Notebooks/HEAD?labpath=notebooks%2FTD-Free-Schroedinger_v2.ipynb)
-
 
 
 ### Teilchen an der Potentialbarriere (vgl. 3.4 im Skriptum)
@@ -140,6 +137,9 @@ Damit diese Terme auf die Wellenfunktion in der jeweils passenden Darstellung wi
 - Fourier Transformation in den Impulsraum
 - Anwendung von $e^{-\frac{i}{\hbar}\frac{\hat{T}}{2}\Delta t}$
 
+Es ist zu beobachten, dass
+- ein Teil der Wellenfunktion reflekiert und ein Teil transmitiert wird.
+- es im Bereich des Potentials zu Interferenzen zwischen den Anteilen mit unterschiedlicher Bewegungsrichtung kommt.
 
 Versuchen sie nun folgende Fragen mit analytischen Überlegungen und numerischen Experimenten zu beantworten:
 - Was beobachten sie, wenn sie den Parameter $v_0$ vergrößern/verkleinern?
@@ -148,37 +148,6 @@ Versuchen sie nun folgende Fragen mit analytischen Überlegungen und numerischen
 - Vergleichen sie die Wellenfunktion im Impulsraum vor und nach der Streuung. Was können sie daraus für die Bewegung der Wellenfunktion im Ortsraum schließen?
 
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Quantentheorie-1/Notebooks/blob/Projektarbeit_Ranner/notebooks/TD-Schroedinger-Barriere.ipynb)
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/Quantentheorie-1/Notebooks/HEAD?labpath=notebooks%2FTD-Schroedinger-Barriere.ipynb)
-
-
-### Leiteroperatoren zur algebraischen Lösung des harmonischen Oszillators (vgl. 5.2.1 im Skriptum)
-
-Wir visualisieren nun die Wirkung der Leiteroperatoren auf die Wellenfunktionen der Lösungen des harmonischen Oszillators mit Potential $V(x) = \frac{1}{2}m\omega^2 x^2$. Dafür starten wir mit der Wellenfunktion im Grundzustand $\psi_0 (x)$, welche (auf eins normiert) folgendermaßen gegeben ist:
-
-$$
-\psi_0 (x) = \frac{m\omega}{\sqrt{2\pi\hbar^2} } e^{-\frac{1}{2} \frac{m\omega}{\hbar} x^2}
-$$
-
-Auf diese Wellenfunktion können wir nun die Aufsteige- und Absteigeoperatoren wirken lassen, welche folgendermaßen definiert sind:
-
-$$
-\hat{a}^{\dagger} = \frac{1}{\sqrt{2}} \left( \sqrt{\frac{m\omega}{\hbar}} x - \sqrt{\frac{\hbar}{m\omega}} \frac{d}{dx}\right)
-$$
-
-$$
-\hat{a} = \frac{1}{\sqrt{2}} \left( \sqrt{\frac{m\omega}{\hbar}} x + \sqrt{\frac{\hbar}{m\omega}} \frac{d}{dx}\right)
-$$
-
-Dargestellt wird jeweils die Wellenfunktion, sowie die Aufenthaltswahrscheinlichkeit $\rho (x) = |\psi(x)|^2$.
-
-Versuchen sie nun folgende Fragen mit analytischen Überlegungen und numerischen Experimenten zu beantworten:
-- Prüfen sie anhand der Graphen, ob $\hat{a}$ und $\hat{a}^{\dagger}$ kommutieren.
-- Was passiert, wenn sie den Absteigeoperator auf den Grundzustand anwenden?
-- Ist es möglich, nach Anwendung von $\hat{a}$ auf den Grundzustand, diesen durch Anwendung von $\hat{a}^{\dagger}$ wiederherzustellen?
-
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Quantentheorie-1/Notebooks/blob/Projektarbeit_Ranner/notebooks/Ladder-Operators.ipynb)
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/Quantentheorie-1/Notebooks/HEAD?labpath=notebooks%2FLadder-Operators.ipynb)
-
 
 ### Kohärente Glauber-Zustände (vgl. 5.3.2 im Skriptum)
 
@@ -188,7 +157,8 @@ $$
 \Psi(x,0) = \frac{1}{2} e^{ipx/\hbar}e^{-(x)^2/(2\hbar)}
 $$
 
-$p$ bezeichnet den Erwartungswert des Impulses.
+$p$ bezeichnet hier den Erwartungswert des Impulses.
+
 Kohärente Glauber-Zustände sind als Eigenzustände des Absteigeoperators definiert. Der Absteigeoperator im Ortsraum ist gegeben als
 
 $$
@@ -206,12 +176,44 @@ Somit ist gezeigt, dass $\Psi(x,0)$ tatsächlich ein Glauber-Zustand ist.
 
 Danach wird analog zum Fall des Teilchens an der Potentialbarriere die Zeitentwicklung des Zustandes im Potential berechnet. 
 
+Es ist zu beobachten, dass
+- die Wellenfunktion nicht "zerfließt".
+- das Maximum der Aufenthaltswahrscheinlichkeit sich bewegt wie im Fall des klassischen harmonischen Oszillators.
+
 Was beobachten sie, wenn sie den Parameter $p$ vergrößern/verkleinern?
 - Was passiert im Grenzfall $p \rightarrow 0$ ?
 - Was passiert im Grenzfall $p \rightarrow \infty$ ? Denken sie daran, dass es sich hier um eine numerische Simulation handelt.
 
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Quantentheorie-1/Notebooks/blob/Projektarbeit_Ranner/notebooks/TD-Schroedinger-Glauber.ipynb)
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/Quantentheorie-1/Notebooks/HEAD?labpath=notebooks%2FTD-Schroedinger-Glauber.ipynb)
+
+
+## Leiteroperatoren zur algebraischen Lösung des harmonischen Oszillators (vgl. 5.2.1 im Skriptum)
+
+Wir visualisieren nun die Wirkung der Leiteroperatoren auf die Wellenfunktionen der Lösungen des harmonischen Oszillators mit Potential $V(x) = \frac{1}{2}m\omega^2 x^2$. Dafür starten wir mit der Wellenfunktion im Grundzustand $\psi_0 (x)$, welche (auf eins normiert) folgendermaßen gegeben ist:
+
+$$
+\psi_0 (x) = \frac{m\omega}{\sqrt{2\pi\hbar^2} } e^{-\frac{1}{2} \frac{m\omega}{\hbar} x^2}
+$$
+
+Auf diese Wellenfunktion können wir nun die Aufsteige- und Absteigeoperatoren wirken lassen, welche im Ortsraum folgendermaßen definiert sind:
+
+$$
+\hat{a}^{\dagger} = \frac{1}{\sqrt{2}} \left( \sqrt{\frac{m\omega}{\hbar}} x - \sqrt{\frac{\hbar}{m\omega}} \frac{d}{dx}\right)
+$$
+
+$$
+\hat{a} = \frac{1}{\sqrt{2}} \left( \sqrt{\frac{m\omega}{\hbar}} x + \sqrt{\frac{\hbar}{m\omega}} \frac{d}{dx}\right)
+$$
+
+Dargestellt wird jeweils die Wellenfunktion, sowie die Aufenthaltswahrscheinlichkeit $\rho (x) = |\psi(x)|^2$.
+
+Versuchen sie nun folgende Fragen mit analytischen Überlegungen und numerischen Experimenten zu beantworten:
+- Prüfen sie anhand der Graphen, ob $\hat{a}$ und $\hat{a}^{\dagger}$ kommutieren.
+- Was passiert, wenn sie den Absteigeoperator auf den Grundzustand anwenden?
+- Ist es möglich, nach Anwendung von $\hat{a}$ auf den Grundzustand, diesen durch Anwendung von $\hat{a}^{\dagger}$ wiederherzustellen?
+
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Quantentheorie-1/Notebooks/blob/Projektarbeit_Ranner/notebooks/Ladder-Operators.ipynb)
+
 
 ## Kugelflächenfunktionen (vgl 6.3.2 im Skriptum)
 
@@ -233,7 +235,7 @@ $$
 
 Gezeigt werden zwei unterschiedliche Darstellungsformen des Realteiles von $Y_l^m$. In der ersten Darstellung gibt die Entfernung eines Flächenpunktes vom Ursprung den Betrag von $Re(Y_l^m)$ in die jeweilige Raumrichtung an. Raumrichtungen, in denen $Re(Y_l^m)$ positiv ist, werden mit rot gekennzeichnet, und jene wo $Re(Y_l^m)$ negativ ist mit blau. 
 
-In der zweiten Darstellung wird der Wert von $Re(Y_l^m)$ mithilfe einer colormap auf der Einheitskugel dargestellt. 
+In der zweiten Darstellung wird der Wert von $Re(Y_l^m)$ mithilfe einer colormap auf der Einheitskugel dargestellt. Nulldurchgängen werden durch eine schwarzen Linie hervorgehoben.
 
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Quantentheorie-1/Notebooks/blob/Projektarbeit_Ranner/notebooks/Kugelflächenfunktionen.ipynb)
 
