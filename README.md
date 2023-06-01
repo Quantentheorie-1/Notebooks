@@ -63,7 +63,7 @@ $e^{-\frac{i}{\hbar} \frac{\hat{T}}{2}\Delta t}  e^{-\frac{i}{\hbar} \hat{V} \De
 Hinreichend kleine Zeitschritte führen zu vernachlässigbar kleinen numerischen
 Fehlern in  $\Psi(x,t)$ .
 
-In der Split-Operator-Methode wird die Wirkung der beiden unterschiedliechen Terme des
+In der Split-Operator-Methode wird die Wirkung der beiden unterschiedlichen Terme des
 genäherten Zeitentwicklungsoperators getrennt und in unterschiedlichen Darstellungen
 berechnet.
 Die Wirkung von 
@@ -82,12 +82,12 @@ welcher sich im Impulsraum zu
 $e^{-\frac{i}{\hbar}\frac{\hbar^2 k^2}{2 m}\Delta t}$
 vereinfacht.
 
-Wir definieren das folgende Gaußsche Wellenpaket im Impulsraum zum Zeitpunlt $t=0$:
+Wir definieren das folgende Gaußsche Wellenpaket im Impulsraum zum Zeitpunkt $t=0$:
 $\tilde{\Psi}(k)= e^{-(k-k_0)^2/d^2}$.
 Der mittlere Impuls dieses Wellenpaketes ist gegeben durch
 $\hbar k_0$.
 
-Das Jupyter Notebook im untenstehenden Link löst die zeitabhänige Schrödingergleichung für das freie
+Das Jupyter Notebook im untenstehenden Link löst die zeitabhängige Schrödingergleichung für das freie
 Teilchen und visualisiert das zeitabhängige Verhalten
 - der Wellenfunktion im Impulsraum $\tilde{\Psi}(k,t)$.
 - der Wellenfunktion im Ortsraum ${\Psi}(r,t)$.
@@ -101,7 +101,7 @@ Es ist zu beobachten, dass
 Versuchen sie nun folgende Fragen mit analytischen Überlegungen und numerischen Experimenten zu beantworten:
 - Was beobachten sie, wenn sie den Parameter $d$ vergrößern/verkleinern?
 - Welche Aussagen können Sie über mögliche Messwerte des Aufenthaltsorts des Teilchens als Funktion der Zeit treffen?
-- Welche Aussagen können Sie über mögliche Messwerte des Impulses des Teilchenis als Funktion der Zeit treffen?
+- Welche Aussagen können Sie über mögliche Messwerte des Impulses des Teilchens als Funktion der Zeit treffen?
 - Was passiert im Grenzfall $d \rightarrow 0$ ?
 - Was passiert im Grenzfall $d \rightarrow \infty$ ?
 
@@ -130,7 +130,7 @@ $e^{-\frac{i}{\hbar} \hat{V}} = e^{-\frac{i}{\hbar} v_0 e^{-(x-x_0)^2/b^2}}$ an.
 Die zwei kinetischen Terme sind im Impulsraum gegeben als 
 $e^{-\frac{i}{\hbar}\frac{\hat{T}}{2}\Delta t} = e^{-\frac{i}{\hbar}\frac{\hbar^2 k^2}{2 m}\frac{\Delta t}{2}}$.
 
-Damit diese Terme auf die Wellenfunktion in der jeweils passenden Darstellung wirken können, muss auch die Wellenfunktion im entsprechenden Raum gegeben sein. Daher muss die Wellenfunktion mithilfe von Fourier-Transformationen in die jeweilige Darstellung gebracht werden. Insgesamt stellt sich die Anwednung das Zeitentwicklungsoperators auf $\tilde{\Psi}(k,t)$ also folgendermaßen dar:
+Damit diese Terme auf die Wellenfunktion in der jeweils passenden Darstellung wirken können, muss auch die Wellenfunktion im entsprechenden Raum gegeben sein. Daher muss die Wellenfunktion mithilfe von Fourier-Transformationen in die jeweilige Darstellung gebracht werden. Insgesamt stellt sich die Anwendnung das Zeitentwicklungsoperators auf $\tilde{\Psi}(k,t)$ also folgendermaßen dar:
 - Anwendung von $e^{-\frac{i}{\hbar}\frac{\hat{T}}{2}\Delta t}$
 - Inverse Fourier Transformation in den Ortsraum
 - Anwendung von $e^{-\frac{i}{\hbar} \hat{V}}$
@@ -138,7 +138,7 @@ Damit diese Terme auf die Wellenfunktion in der jeweils passenden Darstellung wi
 - Anwendung von $e^{-\frac{i}{\hbar}\frac{\hat{T}}{2}\Delta t}$
 
 Es ist zu beobachten, dass
-- ein Teil der Wellenfunktion reflekiert und ein Teil transmitiert wird.
+- ein Teil der Wellenfunktion reflektiert und ein Teil transmittiert wird.
 - es im Bereich des Potentials zu Interferenzen zwischen den Anteilen mit unterschiedlicher Bewegungsrichtung kommt.
 
 Versuchen sie nun folgende Fragen mit analytischen Überlegungen und numerischen Experimenten zu beantworten:
