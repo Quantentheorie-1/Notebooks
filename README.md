@@ -235,7 +235,7 @@ $$
 
 Gezeigt werden zwei unterschiedliche Darstellungsformen des Realteiles von $Y_l^m$. In der ersten Darstellung gibt die Entfernung eines Flächenpunktes vom Ursprung den Betrag von $Re(Y_l^m)$ in die jeweilige Raumrichtung an. Raumrichtungen, in denen $Re(Y_l^m)$ positiv ist, werden mit rot gekennzeichnet, und jene wo $Re(Y_l^m)$ negativ ist mit blau. 
 
-In der zweiten Darstellung wird der Wert von $Re(Y_l^m)$ mithilfe einer colormap auf der Einheitskugel dargestellt. Nulldurchgängen werden durch eine schwarzen Linie hervorgehoben.
+In der zweiten Darstellung wird der Wert von $Re(Y_l^m)$ mithilfe einer colormap auf der Einheitskugel dargestellt. Nulldurchgänge werden durch eine schwarzen Linie hervorgehoben.
 
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Quantentheorie-1/Notebooks/blob/Projektarbeit_Ranner/notebooks/Kugelflächenfunktionen.ipynb)
 
