@@ -72,6 +72,21 @@ wird im Impulsraum berechnet, während die Wirkung von
 $e^{-\frac{i}{\hbar} \hat{V} \Delta t}$
 im Ortsraum berechnet wird.
 
+### Diskretes Gitter
+Wir stellen die Wellenfunktion auf einem diskreten Gitter dar, im Ortsraum mit $2^9+1$ Gitterpunkten gleichmäßig verteilt zwischen $x=-a$ und $x=a$. Wir fordern periodische Randbedingungen, und aus dieser Bedingung $\psi(t,a)=\psi(t,-a)$ folgt:
+
+$$
+\frac{1}{\sqrt{2\pi}} \int_{-\infty}^{\infty} dk \tilde{\psi}(t,k)e^{ika} = 
+\frac{1}{\sqrt{2\pi}} \int_{-\infty}^{\infty} dk \tilde{\psi}(t,k)e^{-ika}.
+$$
+
+Daraus wiederum folgt: 
+$$
+2 k a=2\pi n \Rightarrow k=\frac{\pi}{a}n, \: n\in \mathbb{Z},
+$$
+
+also, dass $k$ nur diese diskreten Werte annehmen kann. Für das diskrete Gitter des Impulsraumes wählen wir daher einen Abstand von $\frac{\pi}{a}$, und verteilen die Gitterpunkte wie im Ortsraum gleichmäßig um null.
+
 ### Freies Teilchen (vgl. 3.2.1 im Skriptum)
 
 Wir betrachten zuerst die Zeitentwicklung eines Gaußschen Wellenpaketes für den Fall
